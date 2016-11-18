@@ -4,9 +4,6 @@ setwd("//FILESHARE/projects/Azavea_CartographicServices/CommitteeOf70_ElectionRe
 #read data
 data <- read.csv("phila_2016_results.csv")
 
-#get dimensions
-dim(data)
-
 #add leading zero to division
 data$DIVISION <- sprintf("%02d", data$DIVISION)
 
@@ -19,11 +16,8 @@ data$WARD_DIV=paste(data$WARD,data$DIVISION,sep="")
 #concatenate office and candidate
 data$OFFICE_CANDIDATE=paste(data$OFFICE,data$CANDIDATE,sep=" ")
 
-#let's remove some superfluous fields
+#remove extra fields
 data <- data[,-c(1:4,6:7)]
-
-#show rows to see if it worked
-head(data)
 
 #pull up reshape library
 library(reshape2)
